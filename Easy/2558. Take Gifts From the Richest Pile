@@ -1,0 +1,16 @@
+class Solution {
+    public long pickGifts(int[] gifts, int k) {
+        Arrays.sort(gifts);
+        int size = gifts.length;
+
+        for (int i = 0; i < k; i++) {
+            gifts[size - 1] = (int) Math.sqrt(gifts[size - 1]);
+            Arrays.sort(gifts);
+        }
+        long sum = 0;
+        for (long gift : gifts) {
+            sum += gift;
+        }
+        return sum;
+    }
+}
