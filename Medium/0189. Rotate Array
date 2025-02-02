@@ -1,0 +1,14 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int size = nums.length;
+        k = k % size;
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
+            int newIndex = (i + k) % size;
+            result[newIndex] = nums[i];
+        }
+        System.arraycopy(result, 0, nums, 0, size);
+        System.out.print(Arrays.toString(nums));
+        return;
+    }
+}
