@@ -1,0 +1,21 @@
+class Solution {
+    public int countDigitOne(int n) {
+
+        int count = 0;
+        long fac = 1;
+        while (n / fac > 0) {
+            long prev = n % fac;
+            long current = (n / fac) % 10;
+            long next = n / (fac * 10);
+            if (current == 0) {
+                count += next * fac;
+            } else if (current == 1) {
+                count += next * fac + prev + 1;
+            } else {
+                count += (next + 1) * fac;
+            }
+            fac *= 10;
+        }
+        return count;
+    }
+}
