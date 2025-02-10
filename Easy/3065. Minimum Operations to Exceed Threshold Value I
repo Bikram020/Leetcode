@@ -1,0 +1,15 @@
+class Solution {
+    public int minOperations(int[] nums, int k) {
+        Arrays.sort(nums); 
+        int size = nums.length;
+        int result = 0;
+        int i = 0;
+
+        while (i < size && nums[i] < k) { 
+            result++;
+            i++;
+        }
+
+        return result;
+    }
+}
