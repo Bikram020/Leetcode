@@ -1,0 +1,15 @@
+class Solution {
+    public int longestNiceSubarray(int[] nums) {
+        int size = nums.length;
+        int result = 0, left = 0, AND = 0;
+        for (int right = 0; right < size; right++) {
+            while ((AND & nums[right]) != 0) {
+                AND ^= nums[left];
+                left++;
+            }
+            AND = AND + nums[right];
+            result = Math.max(result, right - left + 1);
+        }
+        return result;
+    }
+}
