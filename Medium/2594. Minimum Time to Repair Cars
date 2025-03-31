@@ -1,0 +1,30 @@
+class Solution {
+    public long repairCars(int[] ranks, int cars) {
+        long left = 1, right = (long) ranks[0] * cars * cars;
+        
+        for (int i = 0; i < ranks.length; i++) {
+            long time = (long) ranks[i] * cars * cars;
+            if (time < right) {
+                right = time;
+            }
+        }
+
+        while (left < right) {
+            long mid = (left + right) / 2;
+            long totalCars = 0;
+
+            for (int i = 0; i < ranks.length; i++) {
+                totalCars += (long) Math.sqrt(mid / ranks[i]);
+                if (totalCars >= cars) break;
+            }
+
+            if (totalCars >= cars) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left;
+    }
+}
